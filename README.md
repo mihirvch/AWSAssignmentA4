@@ -25,6 +25,9 @@ FormPredictandSave.py runs on Amazon Lambda. The Lambda function first preproces
 For FormPredictandSave.py to run correctly, there must be two layers for Joblib, Pandas, and Requests. These layers were stored in S3.
 
 ### FlaskApp.py and EC2 Instance 
+FlaskApp.py holds the simple Flask app used on the EC2 instance. The app uses the previously saved joblib file to make predicions on the incoming data from Lambda, and returns the prediction to Lambda.
+
+##AWS Workflow
 
 
 
