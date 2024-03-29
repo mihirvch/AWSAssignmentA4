@@ -1,0 +1,2 @@
+gender,married,dependents,education,selfEmployed,applicantIncome,coapplicantIncome,loanAmount,loanAmountTerm,creditHistory,propertyArea,prediction
+Male,No,0,Graduate,No,100000,0,200000,360,1,Urban,Y
