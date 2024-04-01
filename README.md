@@ -11,8 +11,8 @@ There are two datasets: one for creating the model and another for testing it. T
 ### modeljupyter.ipynb
 The model conducts exploratory data analysis, cleans the data, and formats column names to match those used in `Form.html` and `FormPredictandSave.py`. It utilizes a Random Forest model with Grid Search and Stratified k-folds Cross Validation. Stratified k-folds Cross Validation helps address uneven data distributions discovered during EDA by ensuring folds have the same data distribution. The final cells of the notebook save the model to an S3 bucket under the name `model.joblib` for later use. This model was saved using the AWS Sagemaker Jupyter Notebooks feautre.
 
-### Form.html
-`Form.html` serves as the front end for the prediction request. It allows users to input the necessary features for their prediction using various input methods. Users can then submit their request to the Amazon Gateway API using the "submit" function. After the prediction is made, the webpage will display the result under the submit button. `Form.html` is linked to the Gateway API.
+### Form.html style.css background.jpeg
+`Form.html` serves as the front end for the prediction request. It allows users to input the necessary features for their prediction using various input methods. Users can then submit their request to the Amazon Gateway API using the "submit" function. After the prediction is made, the webpage will display the result under the submit button. `Form.html` is linked to the Gateway API. The style.css document and background image allow for a better looking front end.
 
 ### Amazon Gateway API
 Although there is no specific code for the Gateway API, it's noteworthy that an HTTP API was utilized. This API receives JSON data from `Form.html` and forwards it to `FormPredictandSave.py` running in an AWS Lambda Function. The Gateway API's CORS settings are configured appropriately.
