@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Loan Application Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Loan Application Form</h2>
+    <h2>Loan Application Predict</h2>
     <form id="loanApplicationForm">
         <label for="gender">Gender:</label>
         <select id="gender" name="gender">
@@ -60,12 +61,16 @@
         </select><br><br>
 
         <button type="submit" id="submitBtn">Submit Application</button>
+        <div id="submissionStatus" class="hidden"></div>
     </form>
-    <div id="submissionStatus"></div>
+    
 
     <script>
         document.getElementById('loanApplicationForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.style.display = 'none'; // Hide the submit button
+
         
             const formData = {
                 gender: document.getElementById('gender').value,
@@ -96,18 +101,23 @@
             })
             .then(data => {
                 console.log('Success:', data);
-                document.getElementById('submissionStatus').innerText = data.message; // Generic success message
-                // Display custom message based on prediction
+                const submissionStatus = document.getElementById('submissionStatus');
+                submissionStatus.innerText = data.message;
                 if(data.prediction && data.prediction[0] === "Y") {
-                    document.getElementById('submissionStatus').innerText += " Applicant is likely to get a loan.";
+                    submissionStatus.innerText += " Applicant is likely to get a loan.";
                 } else if(data.prediction && data.prediction[0] === "N") {
-                    document.getElementById('submissionStatus').innerText += " Applicant unlikely to get a loan.";
+                    submissionStatus.innerText += " Applicant unlikely to get a loan.";
                 }
+                submissionStatus.style.display = 'block';
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('submissionStatus').innerText = 'Submission failed. Please try again.';
+                const submissionStatus = document.getElementById('submissionStatus');
+                submissionStatus.innerText = 'Submission failed. Please try again.';
+                submissionStatus.style.display = 'block';
             });
         });
     </script>
+</body>
+</html>
     
